@@ -9,7 +9,7 @@ resource "aws_ecs_task_definition" "deployment_task" {
   [
     {
       "name": "deployment-task",
-      "image": "${aws_ecr_repository.docker_ecr_repo.repository_url}",
+      "image": "docker_ecr_repo",
       "essential": true,
       "portMappings": [
         {
