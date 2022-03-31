@@ -38,7 +38,7 @@ module "ecr_mirror" {
     aws_region = "ap-south-1"
     aws_account_id = var.id
     aws_profile = "default"
-    docker_source ="rishabhprashr/tmdb"
+    docker_source ="rishabhprashr/tmdb-image:latest"
     ecr_repo_name ="docker_ecr_repo"
     ecr_repo_tag ="base"
 }
