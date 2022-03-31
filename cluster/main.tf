@@ -3,6 +3,6 @@ provider "aws" {
     region = "ap-south-1"
 }
 
-resource "aws_ecs_cluster" "doker_ecr_cluster" {
-    name = "doker_ecr_cluster"
+resource "aws_ecs_cluster" "docker_ecr_cluster" {
+    name = "docker_ecr_cluster"
 }
