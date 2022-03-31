@@ -33,15 +33,6 @@ resource "aws_ecr_repository_policy" "demo-repo-policy" {
   EOF
 }
 
-module "ecr_mirror" {
-    source = "TechToSpeech/ecr-mirror/aws"
-    aws_region = "ap-south-1"
-    aws_account_id = var.id
-    aws_profile = "default"
-    docker_source ="rishabhprashr/tmdb-image:latest"
-    ecr_repo_name ="docker_ecr_repo"
-    ecr_repo_tag ="base"
-}
 
     
 variable "id" {
