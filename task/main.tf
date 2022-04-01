@@ -3,12 +3,11 @@ provider "aws" {
     region = "ap-south-1"
 }
 
-resource "aws_ecs_task_definition" "my_first_task" {
-  family                   = "my-first-task" # Naming our first task
-  container_definitions    = <<DEFINITION
-  [
+resource "aws_ecs_task_definition" "deployment_task" {
+  family                   = "deployment-task" # Naming our first task
+  container_definitions    = jsonencode([
     {
-      "name": "my-first-task",
+      "name": "deployment-task",
       "image": aws_ecr_repository.docker_ecr_repo.repository_url,
       "essential": true,
       "portMappings": [
@@ -20,8 +19,7 @@ resource "aws_ecs_task_definition" "my_first_task" {
       "memory": 512,
       "cpu": 256
     }
-  ]
-  DEFINITION
+  ])
   requires_compatibilities = ["FARGATE"] # Stating that we are using ECS Fargate
   network_mode             = "awsvpc"    # Using awsvpc as our network mode as this is required for Fargate
   memory                   = 512         # Specifying the memory our container requires
