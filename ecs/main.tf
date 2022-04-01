@@ -34,7 +34,3 @@ resource "aws_ecr_repository_policy" "demo-repo-policy" {
 }
 
 
-    
-variable "id" {
-    type = string
-}
