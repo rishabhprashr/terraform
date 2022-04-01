@@ -1,15 +1,11 @@
-provider "aws" {
-    version = "~> 2.0"
-    region = "ap-south-1"
-}
 
-resource "aws_ecs_task_definition" "deployment_task" {
-  family                   = "deployment-task" # Naming our first task
+resource "aws_ecs_task_definition" "my_first_task" {
+  family                   = "my-first-task" # Naming our first task
   container_definitions    = <<DEFINITION
   [
     {
-      "name": "deployment-task",
-      "image": "docker_ecr_repo",
+      "name": "my-first-task",
+      "image": aws_ecr_repository.docker_ecr_repo.repository_url,
       "essential": true,
       "portMappings": [
         {
@@ -49,3 +45,4 @@ resource "aws_iam_role_policy_attachment" "ecsTaskExecutionRole_policy" {
   role       = "${aws_iam_role.ecsTaskExecutionRole.name}"
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
 }
+view rawmain.tf hosted with ❤ by GitHub
