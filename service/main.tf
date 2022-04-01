@@ -6,8 +6,8 @@ provider "aws" {
 
 resource "aws_ecs_service" "my_first_service" {
   name            = "my-first-service"                             # Naming our first service
-  cluster         = aws_ecs_cluster.docker_ecr_cluster.id             # Referencing our created Cluster
-  task_definition = aws_ecs_task_definition.deployment_task.arn # Referencing the task our service will spin up
+  cluster         = "arn:aws:ecs:ap-south-1:156927083468:cluster/docker_ecr_cluster"            # Referencing our created Cluster
+  task_definition = "deployment_task" # Referencing the task our service will spin up
   launch_type     = "FARGATE"
   desired_count   = 3 # Setting the number of containers we want deployed to 3
 
