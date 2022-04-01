@@ -8,7 +8,7 @@ resource "aws_ecs_task_definition" "deployment_task" {
   container_definitions    = jsonencode([
     {
       "name": "deployment-task",
-      "image": aws_ecr_repository.docker_ecr_repo.repository_url,
+      "image": 156927083468.dkr.ecr.ap-south-1.amazonaws.com/docker_ecr_repo:latest,
       "essential": true,
       "portMappings": [
         {
