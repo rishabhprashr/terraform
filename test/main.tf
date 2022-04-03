@@ -1,6 +1,6 @@
 provider "aws" {
     version = "~> 2.0"
-    region = "ap-south-1"
+    region = "eu-central-1"
 }
 
 resource "aws_ecs_cluster" "docker_ecr_cluster" {
@@ -64,15 +64,15 @@ resource "aws_default_vpc" "default_vpc" {
 
 # Providing a reference to our default subnets
 resource "aws_default_subnet" "default_subnet_a" {
-  availability_zone = "ap-south-1a"
+  availability_zone = "eu-central-1a"
 }
 
 resource "aws_default_subnet" "default_subnet_b" {
-  availability_zone = "ap-south-1b"
+  availability_zone = "eu-central-1b"
 }
 
 resource "aws_default_subnet" "default_subnet_c" {
-  availability_zone = "ap-south-1c"
+  availability_zone = "eu-central-1c"
 }
 
 
