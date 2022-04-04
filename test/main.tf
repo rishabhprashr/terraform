@@ -130,6 +130,7 @@ resource "aws_ecs_service" "deployment_service" {
   task_definition = "${aws_ecs_task_definition.deployment_task.arn}" # Referencing the task our service will spin up
   launch_type     = "FARGATE"
   desired_count   = 3 # Setting the number of containers to 3
+  depends_on      = "${aws_lb_listener.listener}"
 
   load_balancer {
     target_group_arn = "${aws_lb_target_group.target_group.arn}" # Referencing our target group
