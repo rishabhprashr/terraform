@@ -132,7 +132,8 @@ resource "aws_ecs_service" "deployment_service" {
   launch_type     = "FARGATE"
   desired_count   = 3 # Setting the number of containers to 3
   depends_on      = [
-      aws_lb_listener.listener
+      aws_lb_listener.listener,
+      aws_iam_role_policy_attachment.ecsTaskExecutionRole_policy
       ]
 
   load_balancer {
