@@ -2,6 +2,14 @@ provider "aws" {
     region = "eu-central-1"
 }
 
+terraform{
+    backend "s3" {
+        bucket = "statebucket-sp93019"
+        key    = "state/"
+        region = "eu-central-1"
+    }
+}
+
 resource "aws_ecs_cluster" "docker_ecr_cluster" {
   name = "docker-ecr-cluster" # Naming the cluster
 }
