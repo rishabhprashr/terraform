@@ -137,8 +137,10 @@ resource "aws_ecs_service" "deployment_service" {
   cluster         = "${aws_ecs_cluster.docker_ecr_cluster.id}"             # Referencing our created Cluster
   task_definition = "${aws_ecs_task_definition.deployment_task.arn}" # Referencing the task our service will spin up
   launch_type     = "FARGATE"
-  force_new_deployment = "true"
-  desired_count   = 1 # Setting the number of containers to 3
+  deployment_controller {
+    type = "EXTERNAL"
+  }
+  force_new_deployment = "true" # Setting the number of containers to 3
   depends_on      = [
       aws_lb_listener.listener,
       aws_iam_role_policy_attachment.ecsTaskExecutionRole_policy
