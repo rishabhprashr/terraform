@@ -2,6 +2,14 @@ provider "aws" {
     region = "eu-central-1"
 }
 
+terraform{
+    backend "s3" {
+        bucket = "statebucket-sp93019"
+        key    = "state/"
+        region = "eu-central-1"
+    }
+}
+
 
 resource "aws_ecs_service" "deployment_service" {
   name            = "deployment-service"                             # Naming our first service
