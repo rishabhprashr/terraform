@@ -138,8 +138,6 @@ resource "aws_ecs_service" "deployment_service" {
   task_definition = "${aws_ecs_task_definition.deployment_task.arn}" # Referencing the task our service will spin up
   launch_type     = "FARGATE"
   force_new_deployment = true
-  minimum_healthy_percent = 50
-  maximum_percent = 100
   desired_count   = 2 # Setting the number of containers to 3
   depends_on      = [
       aws_lb_listener.listener,
