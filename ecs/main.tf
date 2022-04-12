@@ -4,6 +4,7 @@ provider "aws" {
 
 resource "aws_ecr_repository" "docker_ecr_repo" {
     name = "docker_ecr_repo"
+    image_tag_mutability = "MUTABLE"
 }
 
 resource "aws_ecr_repository_policy" "demo-repo-policy" {

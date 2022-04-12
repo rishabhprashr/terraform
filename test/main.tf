@@ -14,6 +14,10 @@ resource "aws_ecs_cluster" "docker_ecr_cluster" {
   name = "docker-ecr-cluster" # Naming the cluster
 }
 
+data "aws_ecr_image" "deployment_task" {
+  repository_name = "docker-ecr-repo"
+  image_tag = "latest"
+}
 
 
 resource "aws_ecs_task_definition" "deployment_task" {
@@ -22,7 +26,7 @@ resource "aws_ecs_task_definition" "deployment_task" {
   [
     {
       "name": "deployment-task",
-      "image": "156927083468.dkr.ecr.eu-central-1.amazonaws.com/docker_ecr_repo:latest",
+      "image": "docker-ecr-repo:latest@${data.aws_ecr_image.deployment_task.image_digest}",
       "essential": true,
       "portMappings": [
         {
