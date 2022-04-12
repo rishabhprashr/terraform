@@ -26,7 +26,7 @@ resource "aws_ecs_task_definition" "deployment_task" {
   [
     {
       "name": "deployment-task",
-      "image": "docker_ecr_repo:latest@${data.aws_ecr_image.deployment_task.image_digest}",
+      "image": "156927083468.dkr.ecr.eu-central-1.amazonaws.com/docker_ecr_repo:latest@${data.aws_ecr_image.deployment_task.image_digest}",
       "essential": true,
       "portMappings": [
         {
